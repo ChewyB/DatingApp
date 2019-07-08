@@ -26,7 +26,6 @@ export class RegisterComponent implements OnInit {
   cancel() {
     this.cancelRegister.emit(false);
     console.log('cancelled');
-    console.log('The username is: ' + this.model.username);
   }
 
 }
