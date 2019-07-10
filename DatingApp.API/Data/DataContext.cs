@@ -10,5 +10,6 @@ namespace DatingApp.API.Data
         //Here we tell the entity framework about our models by using DbSet<ModelName>
         public DbSet<Value> Values { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<Photo> Photos { get; set; }
     }
 }
