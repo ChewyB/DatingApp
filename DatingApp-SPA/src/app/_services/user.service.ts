@@ -3,25 +3,21 @@ import { environment } from 'src/environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from '../_modules/User';
+import { JwtModule } from '@auth0/angular-jwt';
 
-const httpOptions = {
-  headers: new HttpHeaders({
-    'Authorization': 'Bearer ' + localStorage.getItem('token')
-  })
-};
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
   baseUrl = environment.apiUrl;
-constructor(private http: HttpClient) { }
+constructor(private http: HttpClient, private jwtToken: JwtModule) { }
 
   getUsers(): Observable<User[]> {
-    return this.http.get<User[]>(this.baseUrl + 'users/', httpOptions);
+    return this.http.get<User[]>(this.baseUrl + 'users/');
   }
 
   getUser(id: number): Observable<User> {
-    return this.http.get<User>(this.baseUrl + 'user/' + id, httpOptions);
+    return this.http.get<User>(this.baseUrl + 'users/' + id);
   }
 }
